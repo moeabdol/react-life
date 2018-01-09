@@ -43,6 +43,38 @@ class Main extends Component {
     clearInterval(this.intervalId);
   }
 
+  slow = () => {
+    this.speed = 1000;
+    this.playButton();
+  }
+
+  fast = () => {
+    this.speed = 100;
+    this.playButton();
+  }
+
+  clear = () => {
+    const g = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+    this.setState({ gridFull: g, generation: 0 });
+  }
+
+  gridSize = size => {
+    switch (size) {
+      case '1':
+        this.cols = 20;
+        this.rows = 10;
+        break;
+      case '2':
+        this.cols = 50;
+        this.rows = 30;
+        break;
+      default:
+        this.cols = 70;
+        this.rows = 50;
+    }
+    this.clear();
+  }
+
   play = () => {
     let g = this.state.gridFull;
     let g2 = arrayClone(this.state.gridFull);
@@ -81,7 +113,7 @@ class Main extends Component {
           playButton={this.playButton}
           pauseButton={this.pauseButton}
           slow={this.slow}
-          fase={this.fase}
+          fast={this.fast}
           clear={this.clear}
           seed={this.seed}
           gridSize={this.gridSize}
