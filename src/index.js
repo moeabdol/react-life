@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Grid from './Grid';
+import Buttons from './Buttons';
 
 class Main extends Component {
   constructor() {
@@ -76,6 +77,15 @@ class Main extends Component {
     return (
       <div>
         <h1>The Game of Life</h1>
+        <Buttons
+          playButton={this.playButton}
+          pauseButton={this.pauseButton}
+          slow={this.slow}
+          fase={this.fase}
+          clear={this.clear}
+          seed={this.seed}
+          gridSize={this.gridSize}
+        />
         <Grid
           gridFull={this.state.gridFull}
           rows={this.rows}
